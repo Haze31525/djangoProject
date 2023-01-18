@@ -41,6 +41,7 @@ class Article(models.Model):
         'Image',
         width_field=1920,
         height_field=1080,
+        upload_to='blog/images'
     )
 
     pub_date = models.DateField(
@@ -69,7 +70,7 @@ class Article(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(
         User,
-        on_delete=models.CASCADE
+        on_delete=models.PROTECT
     )
     content = models.TextField(
         'Content',
